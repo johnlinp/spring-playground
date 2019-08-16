@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -22,13 +22,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class UserInfoServiceTest
 {
     @Configuration
+    @ComponentScan(basePackageClasses = UserInfoService.class)
     public static class Config
     {
-        @Bean
-        public UserInfoService userInfoService ()
-        {
-            return new UserInfoServiceImpl();
-        }
     }
 
     @Autowired
